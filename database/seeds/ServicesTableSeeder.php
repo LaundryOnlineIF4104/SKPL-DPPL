@@ -14,12 +14,12 @@ class ServicesTableSeeder extends Seeder
     public function run()
     {
         DB::table('services')->insert([
-            'name' => 'Regular',
+            'jenis_laundry' => 'Regular',
             'price' => 20000
         ]);
 
         DB::table('services')->insert([
-            'name' => 'Premium',
+            'jenis_laundry' => 'Premium',
             'price' => 30000
         ]);
     }

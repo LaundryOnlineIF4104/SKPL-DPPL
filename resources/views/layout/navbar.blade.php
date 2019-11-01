@@ -7,8 +7,13 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/aboutus') }}">TENTANG KAMI</a></li>
                 </ul><a class="navbar-brand text-center ml-auto" href="{{ url('/') }}"><img class="img-fluid nav-logo" src="{{ asset('images/Logo On Laundry.png')}}"></a>
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/order') }}">ORDER</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/login') }}">LOGIN/REGISTER</a></li>
+                    @if(Session::has('id'))
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/order') }}">ORDER</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>       
+                    @else                                  
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/login') }}">LOGIN/REGISTER</a></li>
+                    @endif
                 </ul>
             </div>
         </div>

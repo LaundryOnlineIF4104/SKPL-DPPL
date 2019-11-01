@@ -15,30 +15,29 @@
                 <div class="card" style="width: auto;">
                     <div class="card-body form-order">
                         <form method="POST" action="/order">
+                            {{ csrf_field() }}
                         <h4 class="card-title" style="color: #2b3990;">Pilih Jenis Laundry</h4>
                         <hr style="background-color: #2b3990;">
                         <section style="height: 40px;">
                             <div class="row">
-                                <div class="col">
-                                    <div class="custom-control custom-radio"><input class="custom-control-input" name="jenislaundry" type="radio" onclick="setprice('Rp. 20,000')" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">Reguler</label></div>
-                                </div>
-                                <div class="col">
-                                    <div class="custom-control custom-radio"><input class="custom-control-input" name="jenislaundry" type="radio" onclick="setprice('Rp. 30,000')" id="formCheck-2"><label class="custom-control-label" for="formCheck-2">Premium</label></div>
-                                </div>
+                                @foreach ($services as $service)
+                                    <div class="col">
+                                    <div class="custom-control custom-radio"><input class="custom-control-input" name="jenislaundry" type="radio" value="{{$service->id}}" onclick="setprice('Rp. {{$service->price}}')" id="formCheck-{{$loop->iteration}}"><label class="custom-control-label" for="formCheck-{{$loop->iteration}}">{{$service->jenis_laundry}}</label></div>
+                                    </div>
+                                @endforeach                                                                
                             </div>
                         </section>
                         <h4 class="card-title" style="color: #2b3990;">Detail Pengambilan dan Pengantaran</h4>
                         <hr style="background-color: #2b3990;">
-                        <h5 class="text-muted card-subtitle mb-2">Nama Lengkap</h5><input name="namalengkap" type="text" style="margin-bottom: 15px;width: 350px;" value="{{Session::get('name')}}">
+                        <h5 class="text-muted card-subtitle mb-2">Nama Lengkap</h5><input name="name" type="text" style="margin-bottom: 15px;width: 350px;" value="{{Session::get('name')}}">
                         <h5 class="text-muted card-subtitle mb-2">Nomor Telepon</h5><input name="notelp" type="text" style="margin-bottom: 15px;width: 350px;" value="{{Session::get('notelp')}}">
                         <h5 class="text-muted card-subtitle mb-2">Parfum</h5>
                         <div class="dropdown" style="margin-bottom: 15px;">
-                            <button id="option" class="btn dropdown-toggle border rounded border-dark" data-toggle="dropdown" aria-expanded="false" type="button" style="width: 192px;">Pilih Parfum </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a class="dropdown-item" role="presentation" href="javascript:return false;">Parfum X</a></li>
-                                <li><a class="dropdown-item" role="presentation" href="javascript:return false;">Parfum Y</a></li>
-                                <li><a class="dropdown-item" role="presentation" href="javascript:return false;">Parfum Z</a></li>
-                            </ul>
+                            <select name="parfum" id="parfum">
+                                <option value="X">X</option>
+                                <option value="Y">Y</option>
+                                <option value="Z">Z</option>
+                            </select>
                         </div>
                         <h5 class="text-muted card-subtitle mb-2">Alamat</h5><textarea name="alamat" cols="50" rows="5" required="" style="margin-bottom: 15px;"></textarea>
                         <h5 class="text-muted card-subtitle mb-2">Waktu Pengambilan</h5><input id="waktupengambilan" name="pengambilan" type="date" required="" style="margin-bottom: 15px;">
