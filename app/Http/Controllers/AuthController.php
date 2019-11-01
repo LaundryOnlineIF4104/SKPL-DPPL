@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\UserModel;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -22,9 +22,10 @@ class AuthController extends Controller
     public function postLogin(Request $request){
         $email = $request->email;
         $password = $request->password;
-        $data = UserModel::where('email',$email)->first();
+        $data = User::where('email',$email)->first();
         if($data){
             if(Hash::check($password,$data->password)){
+                Session::put('id', $data->id);
                 Session::put('name', $data->name);
                 Session::put('email',$data->email);
                 Session::put('notelp',$data->notelp);
@@ -39,8 +40,7 @@ class AuthController extends Controller
     }
 
     public function postRegister(Request $request){
-        $user = new UserModel();
-
+        
         $this->validate($request,[
             'username' => 'required|min:8|max:20',
             'name' => 'required|min:1|max:20',
@@ -66,6 +66,7 @@ class AuthController extends Controller
             'email.unique' => ' Email sudah terdaftar pada database.'
         ]);
 
+        $user = new User();
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
         $user->name = $request->name;
