@@ -8,10 +8,10 @@
 
     <!-- CSS -->	      
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap"> 
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/flaticon/flaticon.css')}}">      
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/flaticon/flaticon.css')}}">   
+    <link rel="stylesheet" type="text/css" href="{{ asset('/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">    
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/animate/animate.min.css')}}">   
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/fonts/ionicons/ionicons.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap/bootstrap.min.css')}}">        
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/default.css')}}">      
     
     <!-- Main Content CSS -->

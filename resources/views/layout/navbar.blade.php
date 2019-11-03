@@ -7,11 +7,19 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/aboutus') }}">TENTANG KAMI</a></li>
                 </ul><a class="navbar-brand text-center ml-auto" href="{{ url('/') }}"><img class="img-fluid nav-logo" src="{{ asset('images/Logo On Laundry.png')}}"></a>
                 <ul class="nav navbar-nav ml-auto">
-                    @if(Session::has('id'))
+                    @if(Session::get('tipe') == 3)
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/order') }}">ORDER</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>       
-                    @else                                  
+                    @elseif(Session::get('tipe') == 2)                                 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/editOrders') }}">DAFTAR PEMESANAN</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>
+                    @elseif(Session::get('tipe') == 1)
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/reports') }}">DATA PENJUALAN</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>
+                    @else
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/login') }}">LOGIN/REGISTER</a></li>
                     @endif
                 </ul>

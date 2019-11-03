@@ -1,0 +1,8 @@
+.detailpembayaran{
+    margin: 5rem;
+}
+
+.back-btn a, .back-btn a:hover{
+    color: white;
+    text-decoration: none;
+}

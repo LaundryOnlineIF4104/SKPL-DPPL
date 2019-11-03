@@ -13,7 +13,8 @@
                       <li><a href="#">Hubungi Kami</a></li>
                   </ul>
               </div>
-              <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+              <div class="col-lg-3 item social"><a href="https://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="https://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="https://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
                   <p class="copyright">OnLaundry © 2019</p>
               </div>
           </div>

@@ -22,19 +22,21 @@ class AuthController extends Controller
     public function postLogin(Request $request){
         $email = $request->email;
         $password = $request->password;
-        $data = User::where('email',$email)->first();
-        if($data){
-            if(Hash::check($password,$data->password)){
-                Session::put('id', $data->id);
-                Session::put('name', $data->name);
-                Session::put('email',$data->email);
-                Session::put('notelp',$data->notelp);
-                Session::put('alamat',$data->alamat);
+        $user = User::where('email',$email)->first();
+        if($user){
+            if(Hash::check($password,$user->password)){
+                Session::put('id', $user->id);
+                Session::put('name', $user->name);
+                Session::put('username', $user->username);
+                Session::put('email',$user->email);
+                Session::put('notelp',$user->notelp);
+                Session::put('alamat',$user->alamat);
+                Session::put('tipe', $user->tipe);
                 Session::put('login',TRUE);
                 return redirect('/');
             }
             else{
-                return redirect('login')->with('alert', 'Email atau Password Salah!');
+                return redirect('login')->with('alert','Email atau Password Salah!');                
             }
         }
     }
@@ -71,7 +73,8 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->notelp = $request->notelp;     
+        $user->notelp = $request->notelp;  
+        $user->tipe = 3;   
         
         $user->save();
 

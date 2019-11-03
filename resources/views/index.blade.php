@@ -22,7 +22,7 @@
                   
                   <br />            
                   <br />
-                  <a href="{{ url('/order') }}" class="btn btn-primary header-btn btn-lg">Order Now<i class="fa fa-cloud-download"></i></a>
+                  <a href="{{ url('/order') }}" class="btn btn-primary header-btn btn-lg">Order Now</a>
                 </div>
       
               </div>

@@ -39,9 +39,13 @@
                                 <option value="Z">Parfum Z</option>
                             </select>
                         </div>
-                    <h5 class="text-muted card-subtitle mb-2">Alamat</h5><textarea name="alamat" cols="50" rows="5" required="" style="margin-bottom: 15px;">{{Session::get('alamat')}}</textarea>                        
+                        <h5 class="text-muted card-subtitle mb-2">Alamat</h5><textarea name="alamat" cols="50" rows="5" required="" style="margin-bottom: 15px;"></textarea>
+                        <h5 class="text-muted card-subtitle mb-2">Waktu Pengambilan</h5><input id="waktupengambilan" name="pengambilan" type="date" required="" style="margin-bottom: 15px;">                        
                         <hr style="background-color: #2b3990;">
-                        <button class="btn float-right" id="btn-lanjut" type="submit" style="margin-top: 15px;">ORDER</button>
+                        <div class="d-block">
+                            <h4 class="d-inline-flex"  style="color: #2b3990;">Harga</h4>
+                            <h4 class="d-inline-flex float-right" id="price" style="color: #2b3990;">Rp.0</h4>
+                        </div><button class="btn float-right" id="btn-lanjut" type="submit" style="margin-top: 15px;">Lanjut</button>
                     </form>
                     </div>                    
                     </div>
