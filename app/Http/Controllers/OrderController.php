@@ -19,13 +19,8 @@ class OrderController extends Controller
         if(Session::get('tipe') == 3){ 
             $orders = Order::select('*')->where('user_id','=', Session::get('id'), 'and', 'active', '=', 1)->first();
             if($orders){
-                $payment = Payment::select('*')->where('order_id','=',$orders->id, 'and', 'paid', '=', 1)->first();
-                if($payment == NULL){                                                                                                                        
-                    return view('progressOrder', compact('orders', 'payment')); 
-                }
-                else{                                                       
-                    return view('progressOrder', compact('orders', 'payment')); 
-                }
+                $payment = Payment::select('*')->where('order_id','=',$orders->id, 'and', 'paid', '=', 1)->first();                                                                                                                                       
+                    return view('progressOrder', compact('orders', 'payment'));                                                                                               
             }   
             else{        
                 $services = Service::all();

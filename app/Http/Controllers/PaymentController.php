@@ -8,16 +8,33 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
-{
+{    
     public function payment(){     
         $order = Order::select('*')->where('user_id','=', Session::get('id'), 'and', 'active', '=', 1)->first();  
-        return view('payment', compact('order'));
+        if($order){
+            $payments = Payment::select('*')->where('order_id', '=', $order->id)->first();
+            if($payments){
+                return view('paymentDetail', compact('payments','order'));
+            }
+            else{
+                return view('payment', compact('order'));
+            }
+        }
+        else{
+            return redirect('/order');
+        }
+        
     }    
 
     public function detailpayment(){
         $order = Order::select('*')->where('user_id','=', Session::get('id'), 'and', 'active', '=', 1)->first(); 
-        $payments = Payment::select('*')->where('order_id', '=', $order->id)->first();
-        return view('paymentDetail', compact('payments', 'order'));
+        if($order){
+            $payments = Payment::select('*')->where('order_id', '=', $order->id)->first();
+            return view('paymentDetail', compact('payments', 'order'));
+        }
+        else{
+            return redirect('/');
+        }                
     }
 
     public function postPayment(Request $request){

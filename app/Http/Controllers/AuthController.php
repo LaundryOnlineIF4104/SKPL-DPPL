@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
 {
     public function login(){
-        if(Session::has('name')){
+        if(Session::has('id')){
             return view('index');
         }
         else{
@@ -36,8 +36,11 @@ class AuthController extends Controller
                 return redirect('/');
             }
             else{
-                return redirect('login')->with('alert','Email atau Password Salah!');                
+                return redirect('login')->with('alert','Password Salah!');                
             }
+        }
+        else{
+            return redirect('login')->with('alert','Email tidak ditemukan');                
         }
     }
 

@@ -12,7 +12,7 @@
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>       
                     @elseif(Session::get('tipe') == 2)                                 
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/editOrders') }}">DAFTAR PEMESANAN</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/orderList') }}">DAFTAR PEMESANAN</a></li> 
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>
                     @elseif(Session::get('tipe') == 1)
