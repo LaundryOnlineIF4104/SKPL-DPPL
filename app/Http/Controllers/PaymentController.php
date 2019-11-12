@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {    
     public function payment(){     
-        $order = Order::select('*')->where('user_id','=', Session::get('id'), 'and', 'active', '=', 1)->first();  
+        $order = Order::where('user_id', Session::get('id'))->where('active','1')->first();  
         if($order){
             $payments = Payment::select('*')->where('order_id', '=', $order->id)->first();
             if($payments){
@@ -27,9 +27,9 @@ class PaymentController extends Controller
     }    
 
     public function detailpayment(){
-        $order = Order::select('*')->where('user_id','=', Session::get('id'), 'and', 'active', '=', 1)->first(); 
+        $order = Order::where('user_id', Session::get('id'))->where('active','1')->first(); 
         if($order){
-            $payments = Payment::select('*')->where('order_id', '=', $order->id)->first();
+            $payments = Payment::where('order_id',$order->id)->first(); 
             return view('paymentDetail', compact('payments', 'order'));
         }
         else{
@@ -46,8 +46,8 @@ class PaymentController extends Controller
 
         $Payment->save();
         
-        $order = Order::select('*')->where('id','=', $Payment->order_id, 'and', 'active', '=', 1)->first(); 
-        $payments = Payment::select('*')->where('order_id', '=', $order->id)->first();
+        $order = Order::where('id', $Payment->order_id)->where('active', '1')->first(); 
+        $payments = Payment::where('order_id', $order->id)->first();
         return view('paymentDetail', compact('payments','order'));
     }
 }

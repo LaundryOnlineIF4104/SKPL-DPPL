@@ -1,3 +1,8 @@
 .content{
     margin: 5rem;
 }
+
+#btn-lanjut{
+    background: #2b3990;
+    color: white;
+}

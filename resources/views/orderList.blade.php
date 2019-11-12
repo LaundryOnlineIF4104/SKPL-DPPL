@@ -30,6 +30,7 @@
                         <th class="text-center">Parfum</th>
                         <th class="text-center">Berat</th>
                         <th class="text-center">Proses</th>
+                        <th class="text-center">Status</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -45,9 +46,19 @@
                         <td class="text-center">{{$data->berat}}</td>
                         <td class="text-center">{{$data->proses}}</td>
                         <td class="text-center">
+                            @if($data->active == 1)
+                                Belum Selesai
+                            @else
+                                Selesai
+                            @endif
+                        </td>
+                        <td class="text-center">
                             <div class="btn-group" role="group">
-                                <a class="btn btn-primary editBtn" type="button" style="background-color: #0bea14;color: #000000;" href="/editOrder/{{$data->id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                <a class="btn btn-primary deleteBtn" type="button" style="margin-left: 20px;background-color: rgb(215,24,12);color: black;" href="{{ url('/deleteOrder') }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                @if($data->active == 1)
+                                    <a class="btn btn-primary statusBtn" type="button" style="background-color: #0bea14);color: black;" href="deactivateOrder/{{$data->id}}" onclick="return confirm('Selesaikan Pesanan?')"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                @endif
+                                <a class="btn btn-primary editBtn" type="button" style="margin-left: 20px;background-color: #e8d900;color: #000000;" href="/editOrder/{{$data->id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <a class="btn btn-primary deleteBtn" type="button" style="margin-left: 20px;background-color: rgb(215,24,12);color: black;" href="/deleteOrder/{{$data->id}}" onclick="return confirm('Hapus Pesanan?')"><i class="fa fa-trash" aria-hidden="true"></i></a>                                
                             </div>
                         </td>
                     </tr>

@@ -13,8 +13,9 @@ class editOrderController extends Controller
 {
     public function orderList(){
         if(Session::get('tipe') == 2){
-            $order = Order::all();        
-            return view('orderList', compact('order'));
+            $order = Order::all();
+            $payment = Payment::all();                
+            return view('orderList', compact('order', 'payment'));
         }
         else{
             return redirect('/');
@@ -43,16 +44,27 @@ class editOrderController extends Controller
             'parfum' => $request->parfum,
             'price' => $price,
             'berat' => $request->berat,
-            'proses' => $request->proses,
-            'active' => $request->active
+            'proses' => $request->proses,           
         ]);
 
         return redirect('/orderList')->with('alert-success','Pesanan Berhasil Diedit');
     }
 
-    public function deleteOrder(){
+    public function deleteOrder($id){
         if(Session::get('tipe') == 2){
-            dd('wow');
+            DB::table('payments')->where('order_id','=', $id)->delete();
+            DB::table('orders')->where('id','=', $id)->delete();
+            return redirect('/orderList')->with('alert-success','Pesanan Berhasil Dihapus');
+        }
+        else{
+            return redirect('/');
+        }
+    }
+
+    public function deactivate($id){
+        if(Session::get('tipe') == 2){            
+            DB::table('orders')->where('id','=', $id)->update(['active' => "0"]);
+            return redirect('/orderList')->with('alert-success','Pesanan Berhasil di set Selesai');
         }
         else{
             return redirect('/');

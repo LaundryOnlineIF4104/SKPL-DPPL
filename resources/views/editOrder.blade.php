@@ -39,19 +39,8 @@
                         <h5 class="text-muted card-subtitle mb-2">Berat</h5>
                         <div style="margin-bottom: 15px;"><input type="number" name="berat" min="0" required value="{{$order->berat}}"></div>
                         <h5 class="text-muted card-subtitle mb-2">Proses</h5>
-                        <div style="margin-bottom: 15px;"><input type="number" name="proses" min="1" max="4" value="{{$order->proses}}" required></div>                                               
-                        <h5 class="text-muted card-subtitle mb-2">Status Aktif</h5>
-                        <section style="height: 40px;">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="custom-control custom-radio"><input type="radio" @if($order->active == 1) checked @endif class="custom-control-input" name="active" id="formCheck-5" value="0" /><label class="custom-control-label" for="formCheck-5">Belum Selesai</label></div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="custom-control custom-radio"><input type="radio" @if($order->active == 0) checked @endif class="custom-control-input" name="active" id="formCheck-6" value="1" /><label class="custom-control-label" for="formCheck-6">Selesai</label></div>
-                                    </div>
-                                </div>
-                        </section>                        
-                        <hr><button class="btn float-right" id="btn-lanjut" type="submit" style="margin-top: 15px;">Lanjut</button>
+                        <div style="margin-bottom: 15px;"><input type="number" name="proses" min="1" max="4" value="{{$order->proses}}" required></div>                                                                                             
+                        <hr><button class="btn float-right" id="btn-lanjut" type="submit" style="margin-top: 15px;">SIMPAN</button>
                     </form>
                 </div>
             </div>

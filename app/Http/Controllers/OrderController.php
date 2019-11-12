@@ -17,9 +17,9 @@ class OrderController extends Controller
     
     public function order(){        
         if(Session::get('tipe') == 3){ 
-            $orders = Order::select('*')->where('user_id','=', Session::get('id'), 'and', 'active', '=', 1)->first();
-            if($orders){
-                $payment = Payment::select('*')->where('order_id','=',$orders->id, 'and', 'paid', '=', 1)->first();                                                                                                                                       
+            $orders = Order::where('user_id', Session::get('id'))->where('active','1')->first();            
+            if($orders){                
+                $payment = Payment::where('order_id',$orders->id)->first();                                                                                                                                                                    
                     return view('progressOrder', compact('orders', 'payment'));                                                                                               
             }   
             else{        
@@ -49,8 +49,8 @@ class OrderController extends Controller
         
         $Order->save();
 
-        $orders = Order::select('*')->where('user_id','=', Session::get('id'), 'and', 'active', '=', 1)->first();
-        $payment = Payment::select('*')->where('order_id','=',$orders->id, 'and', 'paid', '=', 1)->first();        
+        $orders = Order::where('user_id', Session::get('id'))->where('active','1')->first(); 
+        $payment = Payment::where('order_id',$orders->id)->first();       
         return view('progressOrder', compact('orders', 'payment'));
     }
 

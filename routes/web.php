@@ -27,4 +27,5 @@ Route::post('/payment', 'PaymentController@postPayment');
 Route::get('/orderList', 'editOrderController@orderList');
 Route::get('/editOrder/{id}', 'editOrderController@editOrder');
 Route::post('/editOrder/update', 'editOrderController@update');
-Route::post('/deleteOrder', 'editOrderController@deleteOrder');
+Route::get('/deleteOrder/{id}', 'editOrderController@deleteOrder');
+Route::get('/deactivateOrder/{id}', 'editOrderController@deactivate');

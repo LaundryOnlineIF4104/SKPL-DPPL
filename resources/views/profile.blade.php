@@ -31,7 +31,7 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col"><button class="btn editBtn" type="submit"><a href="{{ url('/editprofile') }}">EDIT PROFIL</a></button></div>
+                <div class="col"><a class="btn editBtn" href="{{ url('/editprofile') }}">EDIT PROFIL</a></div>
             </div>
         </div>
     </div>

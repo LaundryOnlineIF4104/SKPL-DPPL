@@ -8,13 +8,11 @@
     border-top-right-radius: 4px;
   }
   
-  .editBtn{
+  .editBtn, .editBtn:hover{
     margin-left: 0px;
     background-color: #2b3990;
     margin-top: 20px;
-  }
-
-  .editBtn a{
     color: white;
     text-decoration: none;
   }
+
