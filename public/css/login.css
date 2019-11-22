@@ -86,9 +86,7 @@
   color: #EF3B3A;
 }
 body {  
-  background: white;  
-  background-image : url('/images/wovpattern.png');  
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  background: rgb(105,227,172);
+  background: linear-gradient(90deg, rgba(105,227,172,1) 0%, rgba(43,57,144,1) 100%);    
 }
 
