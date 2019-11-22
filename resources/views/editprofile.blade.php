@@ -25,20 +25,24 @@
             
             @if(Session::has('alert-success'))
             <div class="row">
-                <div class="alert alert-success">
+                <div class="alert alert-success">                    
                     <div>{{Session::get('alert-success')}}</div>
                 </div>
             </div>
             @endif        
         
-        <form method="POST" action="/editprofile">
+        <form method="POST" action="/editprofile" enctype="multipart/form-data">
             @csrf
             <div class="form-row profile-row">
                 <div class="col-md-4 relative">
-                    <div class="avatar">
-                        <div class="avatar-bg center"></div>
+                    <div class="avatar center">
+                        @if($User->file == NULL)
+                            <div class="avatar-bg center"></div>                        
+                        @else
+                            <img width="200px" src="{{ url('/data_file/'.$User->file) }}">
+                        @endif                        
                     </div>
-                    <input type="file" class="form-control" name="fotoprofil">
+                    <input type="file" class="form-control" name="file">
                 </div>
                 <div class="col-md-8">
                     <h1 style="color: #2b3990;">Profil</h1>

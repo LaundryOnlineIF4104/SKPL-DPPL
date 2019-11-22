@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('notelp');
             $table->string('alamat',255)->nullable();     
-            $table->integer('tipe');                 
+            $table->integer('tipe');  
+            $table->string('file', 255)->nullable();               
             $table->rememberToken();
             $table->timestamps();
         });
