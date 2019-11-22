@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use File;
 
 class ProfileController extends Controller
 {
@@ -41,32 +42,18 @@ class ProfileController extends Controller
             $nama_file = time()."_".$file->getClientOriginalName();
             $tujuan_upload = 'data_file';
             $file->move($tujuan_upload,$nama_file);
+            $User = User::where('id', Session::get('id'))->first();
+            if(File::exists('data_file/'.$User->file)){
+                File::delete('data_file/'.$User->file);
+            }
             $User = User::where('id', Session::get('id'))->update([
                 'file' => $nama_file
-            ]);
+            ]);            
         }
         Session::put('name', $request->nama);
         Session::put('email',$request->email);
         Session::put('notelp',$request->notelp);
         Session::put('alamat',$request->alamat);
         return redirect('editprofile')->with('alert-success','Profil Berhasil Diubah');
-    }
-
-    public function proses_upload(Request $request){		
-		// menyimpan data file yang diupload ke variabel $file
-		$file = $request->file('file');
- 
-		$nama_file = time()."_".$file->getClientOriginalName();
- 
-      	        // isi dengan nama folder tempat kemana file diupload
-		$tujuan_upload = 'data_file';
-		$file->move($tujuan_upload,$nama_file);
- 
-		Gambar::create([
-			'file' => $nama_file,
-			'keterangan' => $request->keterangan,
-		]);
- 
-		return redirect()->back();
     }
 }
