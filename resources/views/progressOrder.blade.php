@@ -40,14 +40,14 @@
             <hr>
             
             @if($orders->proses > 1)
-                @if($payment == NULL)                    
+                @if($payment->metode_pembayaran == NULL)                    
                         <div class="btn-payment text-center">
                             <a class="btn btn-primary" id="btn-pilih" style="background-color: #2b3990;" href="{{ url('/payment') }}">PILIH PEMBAYARAN</a>
                         </div>                    
                 @endif
             @endif
             
-            @if($payment != NULL)                
+            @if($payment->metode_pembayaran != NULL)                
                     <div class="btn-payment text-center">
                         <a class="btn btn-primary" id="btn-pilih" style="background-color: #2b3990;" href="{{ url('/detailpayment') }}">DETAIL PEMBAYARAN</a>
                     </div>                

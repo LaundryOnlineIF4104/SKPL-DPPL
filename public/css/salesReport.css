@@ -1,0 +1,16 @@
+.reportContainer{
+    padding: 5rem;
+}
+
+hr{
+    background: #2b3990;
+}
+
+.salecard{
+    border: 1px solid #2b3990 !important;
+}
+
+.btnDate, .btnDate:hover{
+    background-color: #2b3990;
+    color: white;
+}

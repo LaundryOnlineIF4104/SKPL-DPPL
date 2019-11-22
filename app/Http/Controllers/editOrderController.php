@@ -61,6 +61,18 @@ class editOrderController extends Controller
         }
     }
 
+    public function paidOrder($id){
+        if(Session::get('tipe') == 2){
+            DB::table('payments')->where('order_id','=', $id)->update([
+                'paid' => '1'
+            ]);
+            return redirect('/orderList')->with('alert-success','Pesanan Berhasil diset Lunas!');
+        }
+        else{
+            return redirect('/');
+        }
+    }
+
     public function deactivate($id){
         if(Session::get('tipe') == 2){            
             DB::table('orders')->where('id','=', $id)->update(['active' => "0"]);

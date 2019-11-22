@@ -45,11 +45,19 @@ class OrderController extends Controller
         $Order->price = $price;
         $Order->active = 1;
         $Order->berat = 0;
-        $Order->proses = 1;       
-        
+        $Order->proses = 1;      
+
         $Order->save();
 
         $orders = Order::where('user_id', Session::get('id'))->where('active','1')->first(); 
+
+        if($orders->id){
+            $Payment = new Payment();
+            $Payment->order_id = $orders->id;            
+
+            $Payment->save();
+        }
+
         $payment = Payment::where('order_id',$orders->id)->first();       
         return view('progressOrder', compact('orders', 'payment'));
     }

@@ -80,7 +80,6 @@ class AuthController extends Controller
         $user->tipe = 3;   
         
         $user->save();
-
         return redirect('login')->with('alert-success','Kamu berhasil Register');
     }
 

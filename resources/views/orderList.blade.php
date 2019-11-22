@@ -59,6 +59,7 @@
                                 @endif
                                 <a class="btn btn-primary editBtn" type="button" style="margin-left: 20px;background-color: #e8d900;color: #000000;" href="/editOrder/{{$data->id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                 <a class="btn btn-primary deleteBtn" type="button" style="margin-left: 20px;background-color: rgb(215,24,12);color: black;" href="/deleteOrder/{{$data->id}}" onclick="return confirm('Hapus Pesanan?')"><i class="fa fa-trash" aria-hidden="true"></i></a>                                
+                                <a class="btn btn-primary paidBtn" type="button" style="margin-left: 20px;background-color: #85bb65;color: black;" href="/paidOrder/{{$data->id}}" onclick="return confirm('Set Pesanan menjadi Lunas?')"><i class="fa fa-money" aria-hidden="true"></i></a>                                
                             </div>
                         </td>
                     </tr>
@@ -75,15 +76,6 @@
 <script>
     $(document).ready(function(){
         $('#tabelPemesanan').DataTable();
-    });
-
-    $(".editBtn").click(function() {
-        var $row = $(this).closest("tr");    // Find the row
-        var $tds = $row.find("td");
-        $.each($tds, function() {
-            var $data = $(this);
-            console.log($data.text());
-        });    
-    });
+    });    
 </script>
 @endsection

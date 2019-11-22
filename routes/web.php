@@ -28,4 +28,7 @@ Route::get('/orderList', 'editOrderController@orderList');
 Route::get('/editOrder/{id}', 'editOrderController@editOrder');
 Route::post('/editOrder/update', 'editOrderController@update');
 Route::get('/deleteOrder/{id}', 'editOrderController@deleteOrder');
+Route::get('/paidOrder/{id}', 'editOrderController@paidOrder');
 Route::get('/deactivateOrder/{id}', 'editOrderController@deactivate');
+Route::get('/salesReport', 'ReportsController@salesReport');
+Route::post('/postReport', 'ReportsController@postReport');

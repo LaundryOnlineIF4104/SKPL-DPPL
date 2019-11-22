@@ -23,6 +23,12 @@
                                 <p>Rp.{{$payments->total_harga}}</p>
                                 <h4 style="color: #2b3990;">Metode Pembayaran</h4>
                                 <p>{{$payments->metode_pembayaran}}</p>
+                                <h4 style="color: #2b3990;">Status</h4>                                
+                                @if($payments->paid == '1')
+                                    <p>Lunas</p>                                
+                                @else
+                                    <p>Belum Lunas</p>                
+                                @endif                
                                 <section></section>
                                 @if($payments->metode_pembayaran != 'Cash')
                                     <div class="col col-border" style="border-left: 1px solid #2b3990;border-right: 1px solid #2b3990;border-top: 1px solid #2b3990;border-bottom: 1px solid #2b3990;border-radius: 15px;">

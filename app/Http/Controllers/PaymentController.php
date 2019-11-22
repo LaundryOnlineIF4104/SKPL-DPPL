@@ -13,7 +13,7 @@ class PaymentController extends Controller
         $order = Order::where('user_id', Session::get('id'))->where('active','1')->first();  
         if($order){
             $payments = Payment::select('*')->where('order_id', '=', $order->id)->first();
-            if($payments){
+            if($payments->metode_pembayaran){
                 return view('paymentDetail', compact('payments','order'));
             }
             else{
@@ -38,7 +38,8 @@ class PaymentController extends Controller
     }
 
     public function postPayment(Request $request){
-        $Payment = new Payment();
+        $Order = Order::where('user_id', Session::get('id'))->where('active','1')->first(); 
+        $Payment = Payment::where('order_id',$Order->id)->first();
         $Payment->order_id = $request->order_id;
         $Payment->metode_pembayaran = $request->metodepembayaran;
         $Payment->total_harga = $request->total_harga;

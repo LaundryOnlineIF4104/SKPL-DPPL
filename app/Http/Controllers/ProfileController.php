@@ -29,7 +29,7 @@ class ProfileController extends Controller
                 'confirmpass' => 'same:password'
             ]);
             $User = User::where('id', Session::get('id'))->update([
-                'password' => $request->password
+                'password' => bcrypt($request->password)
             ]);
         }
         Session::put('name', $request->nama);
