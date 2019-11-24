@@ -16,9 +16,9 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');     
             $table->unsignedBigInteger('order_id');       
-            $table->string('metode_pembayaran');
-            $table->bigInteger('total_harga');
-            $table->boolean('paid');
+            $table->string('metode_pembayaran')->nullable();
+            $table->bigInteger('total_harga')->nullable();
+            $table->boolean('paid')->default('0');
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders');
         });
