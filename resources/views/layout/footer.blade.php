@@ -8,8 +8,8 @@
               <div class="col-sm-4 col-md-3 item">
                   <h3 style="font-size: 22px;">Info</h3>
                   <ul>
-                      <li><a href="#">Layanan</a></li>
-                      <li><a href="#">Tentang Kami</a></li>
+                      <li><a href="{{ url('/services') }}">Layanan</a></li>
+                      <li><a href="{{ url('/aboutus') }}">Tentang Kami</a></li>
                       <li><a href="#">Hubungi Kami</a></li>
                   </ul>
               </div>

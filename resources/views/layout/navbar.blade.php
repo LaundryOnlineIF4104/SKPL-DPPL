@@ -9,15 +9,15 @@
                 <ul class="nav navbar-nav ml-auto">
                     @if(Session::get('tipe') == 3)
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/order') }}">ORDER</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/editprofile') }}">PROFIL</a></li> 
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>       
                     @elseif(Session::get('tipe') == 2)                                 
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/orderList') }}">DAFTAR PEMESANAN</a></li> 
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/editprofile') }}">PROFIL</a></li> 
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>
                     @elseif(Session::get('tipe') == 1)
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/salesReport') }}">DATA PENJUALAN</a></li> 
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/profile') }}">PROFIL</a></li> 
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/editprofile') }}">PROFIL</a></li> 
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/logout') }}">LOGOUT</a></li>
                     @else
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/login') }}">LOGIN/REGISTER</a></li>

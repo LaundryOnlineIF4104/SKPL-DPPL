@@ -12,13 +12,14 @@
 */
 
 Route::get('/', 'PagesController@home');
+Route::get('/aboutus', 'PagesController@aboutus');
+Route::get('/services', 'PagesController@services');
 Route::get('/order', 'OrderController@order');
 Route::post('/order', 'OrderController@postOrder');
 Route::get('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@postRegister');
 Route::post('/login', 'AuthController@postLogin');
 Route::get('/logout', 'AuthController@logout');
-Route::get('/profile', 'ProfileController@profile');
 Route::get('/editprofile', 'ProfileController@editProfile');
 Route::post('/editprofile', 'ProfileController@postEditProfile');
 Route::get('/payment', 'PaymentController@payment');

@@ -1,3 +1,7 @@
-@charset "utf-8";
-/* CSS Document */
-
+.services{
+  padding: 5rem;
+}
+.sectiontitle{
+  color: #2B3990;
+  margin-bottom: 3rem;
+}

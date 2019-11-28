@@ -9,10 +9,6 @@ use File;
 
 class ProfileController extends Controller
 {
-    public function profile(){
-        return view('profile');
-    }
-
     public function editProfile(){
         $User = User::where('id', Session::get('id'))->first();      
         return view('editprofile', compact('User'));
