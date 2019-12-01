@@ -21,11 +21,23 @@ class ProfileController extends Controller
                 'required',
                 'email',
                 Rule::unique('users')->ignore(Session::get('id')),
-        ]]);
+        ]],[
+            'email.required' => 'Email harus diisi.',
+            'email.unique' => 'Email sudah digunakan oleh user lain.'
+        ]);
         $this->validate($request,[                
             'nama' => 'required|min:1|max:20',
             'alamat' => 'required|min:8',
             'notelp' => 'required|numeric|min:10',
+        ],[
+            'nama.required' => 'Nama harus diisi.',
+            'nama.max' => 'Nama tidak lebih dari 20 karakter',
+            'nama.min' => 'Nama harus lebih dari 1 karakter',
+            'alamat.required' => 'Alamat harus diisi.',
+            'alamat.min' => 'Alamat harus lebih dari 8 karakter',
+            'notelp.required' => 'Nomor Telepon harus diisi.',
+            'notelp.numeric' => 'Nomor Telepon harus numerik.',
+            'notelp.min' => 'Nomor Telepon harus lebih dari 10 karakter',
         ]);
         $User = User::where('id', Session::get('id'))->update([
             'name' => $request->nama,
@@ -37,6 +49,10 @@ class ProfileController extends Controller
             $this->validate($request,[                
                 'password' => 'min:8|max:20',
                 'confirmpass' => 'same:password'
+            ],[
+                'password.min' => 'Password harus lebih dari 8 karakter.',
+                'password.max' => 'Password tidak lebih dari 20 karakter.',
+                'confirmpass.same' => 'Confirm Password harus sama dengan Password'
             ]);
             $User = User::where('id', Session::get('id'))->update([
                 'password' => bcrypt($request->password)

@@ -44,6 +44,7 @@ class PaymentController extends Controller
             'total_harga' => 'required|numeric',                       
         ],[
             'total_harga.required' => ' Total Harga tidak valid.',
+            'total_harga.numeric' => ' Total Harga harus numerik.',
             'metodepembayaran.required' => ' Metode Pembayaran harus diisi.',
             'order_id.required' => ' Order ID tidak valid.',            
         ]);

@@ -15,7 +15,7 @@ class editOrderController extends Controller
         if(Session::get('tipe') == 2){              
             $order = DB::table('orders')
                 ->join('payments', 'orders.id', '=', 'payments.order_id')
-                ->select('orders.id AS id', 'orders.nama','orders.alamat','orders.jenis_laundry', 'orders.parfum', 'orders.berat', 'orders.active', 'orders.proses','payments.metode_pembayaran', 'payments.total_harga', 'payments.paid')
+                ->select('orders.id AS id', 'orders.nama','orders.alamat','orders.jenis_laundry','orders.notelp', 'orders.parfum', 'orders.berat', 'orders.active', 'orders.proses','payments.metode_pembayaran', 'payments.total_harga', 'payments.paid')
                 ->get();              
             return view('orderList', compact('order'));
         }
@@ -40,16 +40,24 @@ class editOrderController extends Controller
             'id' => 'required|numeric',
             'nama' => 'required|min:1|max:20',
             'jenislaundry' => 'required|numeric',
-            'alamat' => 'required',
+            'alamat' => 'required|min:8',
             'berat' => 'required|numeric',
             'proses' => 'required|numeric',
-            'parfum' => 'required'            
+            'parfum' => 'required|max:1'            
         ],[
             'id.required' => ' ID harus diisi.',
+            'id.numeric' => 'ID harus numerik.',
             'jenislaundry.required' => ' Pilih salah satu Jenis Laundry.',
+            'jenislaundry.numeric' => 'Jenis Laundry harus numerik.',
             'nama.required' => ' Nama harus diisi.',
+            'nama.max' => 'Nama tidak lebih dari 20 karakter',
+            'nama.min' => 'Nama harus lebih dari 1 karakter',
             'alamat.required' => ' Alamat harus diisi.',
+            'alamat.min' => 'Alamat harus lebih dari 8 karakter',
+            'parfum.required' => ' Pilih salah satu parfum',
+            'parfum.max' => 'Parfum tidak lebih dari 1 karakter',
             'berat.required' => ' Berat harus diisi.',
+            'berat.numeric' => 'Berat harus numerik.',
             'proses.required' => ' Proses harus diisi'
         ]);
         $jenislaundry = Service::select('jenis_laundry')->where('id', '=', $request->jenislaundry)->first()->jenis_laundry;  

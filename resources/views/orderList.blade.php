@@ -26,6 +26,7 @@
                         <th class="text-center">ID Pemesanan</th>
                         <th class="text-center">Nama Lengkap</th>
                         <th class="text-center">Alamat</th>
+                        <th class="text-center">Nomor Telepon</th>
                         <th class="text-center">Jenis Laundry</th>
                         <th class="text-center">Parfum</th>
                         <th class="text-center">Berat</th>
@@ -44,6 +45,7 @@
                         <td class="text-center">{{$data->id}}</td>
                         <td class="text-center">{{$data->nama}}</td>
                         <td class="text-center">{{$data->alamat}}</td>
+                        <td class="text-center">{{$data->notelp}}</td>
                         <td class="text-center">{{$data->jenis_laundry}}</td>
                         <td class="text-center">{{$data->parfum}}</td>
                         <td class="text-center">

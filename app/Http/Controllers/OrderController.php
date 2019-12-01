@@ -33,17 +33,24 @@ class OrderController extends Controller
 
     public function postOrder(Request $request){      
         $this->validate($request,[
-            'jenislaundry' => 'required',
+            'jenislaundry' => 'required|numeric',
             'name' => 'required|min:1|max:20',
-            'alamat' => 'required',
-            'parfum' => 'required',
+            'alamat' => 'required|min:8',
+            'parfum' => 'required|max:1',
             'notelp' => 'required|numeric|min:10'            
         ],[
             'jenislaundry.required' => ' Pilih salah satu Jenis Laundry.',
+            'jenislaundry.numeric' => 'Jenis Laundry harus numerik.',
             'name.required' => ' Nama harus diisi.',
+            'nama.max' => 'Nama tidak lebih dari 20 karakter',
+            'nama.min' => 'Nama harus lebih dari 1 karakter',
             'alamat.required' => ' Alamat harus diisi.',
+            'alamat.min' => 'Alamat harus lebih dari 8 karakter',
             'parfum.required' => ' Pilih salah satu parfum',
-            'notelp.required' => ' Nomor Telepon harus diisi.'
+            'parfum.max' => 'Parfum tidak lebih dari 1 karakter',
+            'notelp.required' => ' Nomor Telepon harus diisi.',
+            'notelp.numeric' => 'Nomor Telepon harus numerik.',
+            'notelp.min' => 'Nomor Telepon harus lebih dari 10 karakter',
         ]);
         $jenislaundry = Service::select('jenis_laundry')->where('id', '=', $request->jenislaundry)->first()->jenis_laundry;  
         $price = Service::select('price')->where('id', '=', $request->jenislaundry)->first()->price;
