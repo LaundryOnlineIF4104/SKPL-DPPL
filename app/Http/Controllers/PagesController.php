@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
 {
-    public function home(){
+    public function home(){        
         return view('index');
     }
 

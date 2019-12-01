@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Session;
 class editOrderController extends Controller
 {
     public function orderList(){
-        if(Session::get('tipe') == 2){
-            $order = Order::all();
-            $payment = Payment::all();                
-            return view('orderList', compact('order', 'payment'));
+        if(Session::get('tipe') == 2){              
+            $order = DB::table('orders')
+                ->join('payments', 'orders.id', '=', 'payments.order_id')
+                ->select('orders.id AS id', 'orders.nama','orders.alamat','orders.jenis_laundry', 'orders.parfum', 'orders.berat', 'orders.active', 'orders.proses','payments.metode_pembayaran', 'payments.total_harga', 'payments.paid')
+                ->get();              
+            return view('orderList', compact('order'));
         }
         else{
             return redirect('/');
@@ -34,8 +36,24 @@ class editOrderController extends Controller
     }
 
     public function update(Request $request){
+        $this->validate($request,[
+            'id' => 'required|numeric',
+            'nama' => 'required|min:1|max:20',
+            'jenislaundry' => 'required|numeric',
+            'alamat' => 'required',
+            'berat' => 'required|numeric',
+            'proses' => 'required|numeric',
+            'parfum' => 'required'            
+        ],[
+            'id.required' => ' ID harus diisi.',
+            'jenislaundry.required' => ' Pilih salah satu Jenis Laundry.',
+            'nama.required' => ' Nama harus diisi.',
+            'alamat.required' => ' Alamat harus diisi.',
+            'berat.required' => ' Berat harus diisi.',
+            'proses.required' => ' Proses harus diisi'
+        ]);
         $jenislaundry = Service::select('jenis_laundry')->where('id', '=', $request->jenislaundry)->first()->jenis_laundry;  
-        $price = Service::select('price')->where('id', '=', $request->jenislaundry)->first()->price;        
+        $price = Service::select('price')->where('id', '=', $request->jenislaundry)->first()->price;                
         DB::table('orders')->where('id',$request->id)->update([
             'nama' => $request->nama,
             'service_id' => $request->jenislaundry,

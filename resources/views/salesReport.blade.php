@@ -57,8 +57,24 @@
                             <td class="text-center">{{$data->created_at}}</td>
                             <td class="text-center">{{$data->nama}}</td>
                             <td class="text-center">{{$data->berat}}</td>
-                            <td class="text-center">{{$data->metode_pembayaran}}</td>
-                            <td class="text-center">{{$data->total_harga}}</td>
+                            <td class="text-center">
+                                @if($data->metode_pembayaran == NULL)
+                                    Belum Ada
+                                @elseif($data->metode_pembayaran != NULL)
+                                    {{$data->metode_pembayaran}}
+                                @else
+                                    Tidak Valid
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                @if($data->total_harga == NULL)
+                                    Belum Ada
+                                @elseif($data->total_harga != NULL)
+                                   {{$data->total_harga}}
+                                @else
+                                    Tidak Valid
+                                @endif 
+                            </td>
                             @if($data->paid == 0)
                                 <td class="text-center">Belum Lunas</td>   
                             @else

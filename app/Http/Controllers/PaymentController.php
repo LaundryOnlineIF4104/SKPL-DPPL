@@ -38,6 +38,15 @@ class PaymentController extends Controller
     }
 
     public function postPayment(Request $request){
+        $this->validate($request,[
+            'order_id' => 'required',
+            'metodepembayaran' => 'required',
+            'total_harga' => 'required|numeric',                       
+        ],[
+            'total_harga.required' => ' Total Harga tidak valid.',
+            'metodepembayaran.required' => ' Metode Pembayaran harus diisi.',
+            'order_id.required' => ' Order ID tidak valid.',            
+        ]);
         $Order = Order::where('user_id', Session::get('id'))->where('active','1')->first(); 
         $Payment = Payment::where('order_id',$Order->id)->first();
         $Payment->order_id = $request->order_id;
