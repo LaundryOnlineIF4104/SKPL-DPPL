@@ -24,7 +24,7 @@ class ProfileController extends Controller
         ]]);
         $this->validate($request,[                
             'nama' => 'required|min:1|max:20',
-            'alamat' => 'required|min:8|max:20',
+            'alamat' => 'required|min:8',
             'notelp' => 'required|numeric|min:10',
         ]);
         $User = User::where('id', Session::get('id'))->update([
