@@ -2,8 +2,8 @@
 
 @section('title', 'Tentang Kami | On-Laundry')
 
-@section('css')    
-    <link rel="stylesheet" href="{{ asset('/css/services.css')}}"> 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('/css/services.css')}}">
 @endsection
 
 @section('content')
@@ -13,14 +13,14 @@
             <div class="row">
                 <div class="col-sm-12 col-md-4">
                     <div class="serviceBox"><img class="rounded-circle img-fluid border d-block mx-auto" src="images/drycleaning.jpg" width="300px">
-                        <h3 class="text-center serviceName" style="color: #2b3990;">DRY CLEANING</h3>
-                        <p class="text-justify">On-Laundry menyediakan jasa cuci dengan menggunakan teknologi dry cleaning atau mencuci runakan bahan berkualitas sehingga pakaian akan terasa lebih bersih,wangi dan juga lembut.&nbsp;<br><br><br><br><br></p>
+                        <h3 class="text-center serviceName" style="color: #2b3990;">REGULAR LAUNDRY</h3>
+                        <p class="text-justify">On-Laundry menyediakan jasa cuci laundry menggunakan pewangi dan deterjen yang berkualitas sehingga pakaian menjadi lebih bersih.<br><br><br><br><br></p>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4">
                     <div class="serviceBox pink"><img class="rounded-circle img-fluid border d-block mx-auto" src="images/premiumcleaning.jpg" width="300px">
-                        <h3 class="text-center serviceName" style="color: #2b3990;">PREMIUM CLEANING</h3>
-                        <p class="text-justify">On-Laundry menyediakan jasa cuci dengan menggunakan Teknik manual tanpa mesin sehingga dijamin tidak luntur,lebih bersih dan juga teliti dalam mencuci sehingga anda lebih puas.<br></p>
+                        <h3 class="text-center serviceName" style="color: #2b3990;">PREMIUM LAUNDRY</h3>
+                        <p class="text-justify">On-Laundry menyediakan jasa cuci dengan menggunakan teknologi dry cleaning atau mencuci menggunakan bahan berkualitas sehingga pakaian akan terasa lebih bersih,wangi dan juga lembut.&nbsp;<br></p>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4">
