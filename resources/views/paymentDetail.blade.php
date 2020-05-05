@@ -3,7 +3,7 @@
 @section('title', 'Payment Detail | On-Laundry')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('/css/paymentdetail.css')}}"> 
+    <link rel="stylesheet" href="{{ asset('/css/paymentdetail.css')}}">
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="container">
             <h1 style="color: #2b3990;">Detail Pembayaran</h1>
             <div class="row">
-                <div class="col col-border" style="/*border-left: 1px solid red;*/">
+                <div class="col col-border">
                     <div class="card">
                         <div class="card-body" style="border : 1px solid #2b3990">
                             <div>
@@ -23,21 +23,23 @@
                                 <p>Rp.{{$payments->total_harga}}</p>
                                 <h4 style="color: #2b3990;">Metode Pembayaran</h4>
                                 <p>{{$payments->metode_pembayaran}}</p>
-                                <h4 style="color: #2b3990;">Status</h4>                                
+                                <h4 style="color: #2b3990;">Status</h4>
                                 @if($payments->paid == '1')
-                                    <p>Lunas</p>                                
+                                    <p>Lunas</p>
                                 @else
-                                    <p>Belum Lunas</p>                
-                                @endif                
+                                    <p>Belum Lunas</p>
+                                @endif
                                 <section></section>
                                 @if($payments->metode_pembayaran != 'Cash')
                                     <div class="col col-border" style="border-left: 1px solid #2b3990;border-right: 1px solid #2b3990;border-top: 1px solid #2b3990;border-bottom: 1px solid #2b3990;border-radius: 15px;">
                                         <h4 style="color: #2b3990;">Kirim ke No. Rekening</h4>
                                         <p>BNI a/n Yulian Andyka 4080001234</p>
+                                        <h4 style="color: #2b3990;">Kirim Bukti Pembayaran ke Nomor Telepon</h4>
+                                        <p>0813214536478</p>
                                         <h4 style="color: #2b3990;">Segera Bayar Sebelum</h4>
                                         <p>{{$payments->created_at}}</p>
-                                    </div>                                
-                                @endif                                
+                                    </div>
+                                @endif
                             </div>
                             <hr style="background-color: #2b3990;">
                             <a class="btn btn-link" id="back-btn" style="background-color: #2b3990;" href="{{ url('/order') }}">KEMBALI</a>
