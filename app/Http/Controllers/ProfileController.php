@@ -11,7 +11,7 @@ use Illuminate\Validation\Rule;
 class ProfileController extends Controller
 {
     public function editProfile(){
-        $User = User::where('id', Session::get('id'))->first();      
+        $User = User::where('id', Session::get('id'))->first();
         return view('editprofile', compact('User'));
     }
 
@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'email.required' => 'Email harus diisi.',
             'email.unique' => 'Email sudah digunakan oleh user lain.'
         ]);
-        $this->validate($request,[                
+        $this->validate($request,[
             'nama' => 'required|min:1|max:20',
             'alamat' => 'required|min:8',
             'notelp' => 'required|numeric|min:10',
@@ -43,10 +43,10 @@ class ProfileController extends Controller
             'name' => $request->nama,
             'email' => $request->email,
             'alamat' => $request->alamat,
-            'notelp' => $request->notelp          
-        ]);                
+            'notelp' => $request->notelp
+        ]);
         if($request->password){
-            $this->validate($request,[                
+            $this->validate($request,[
                 'password' => 'min:8|max:20',
                 'confirmpass' => 'same:password'
             ],[
@@ -59,7 +59,7 @@ class ProfileController extends Controller
             ]);
         }
         if($request->file){
-            $this->validate($request,[ 
+            $this->validate($request,[
                 'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048'
             ]);
             $file = $request->file('file');
@@ -72,7 +72,7 @@ class ProfileController extends Controller
             }
             $User = User::where('id', Session::get('id'))->update([
                 'file' => $nama_file
-            ]);            
+            ]);
         }
         Session::put('name', $request->nama);
         Session::put('email',$request->email);
